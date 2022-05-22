@@ -1,3 +1,4 @@
+import datetime
 import os
 
 
@@ -11,3 +12,4 @@ class DevelopmentConfig(object):
         'host': 'localhost',
         'port': 27017
     }
+    JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(minutes=5)

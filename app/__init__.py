@@ -30,3 +30,5 @@ def add_blueprints(app):
     app.register_blueprint(auth_blueprint)
     from app.controller.books import book_blueprint
     app.register_blueprint(book_blueprint)
+    from app.controller.user import user_blueprint
+    app.register_blueprint(user_blueprint)

@@ -1,4 +1,3 @@
-import os
 import unittest
 
 from mongoengine import get_db, disconnect
@@ -22,17 +21,15 @@ class TestUserModel(unittest.TestCase):
         disconnect(app.db)
         self.app_context.pop()
 
-    def test_test_config(self):
-        self.assertTrue(self.app.config['SECRET_KEY'], "sanket")
-        self.assertTrue(self.app.config['TESTING'])
+    def test_function(self):
+        self.assertEqual(0, 0)
 
-    def test_encode_auth_token(self):
-        user = User(username='test', password='test123')
+    def test_user(self):
+        user = User(username='Sanket', password='1234')
         user.save()
-        print(os.environ.get('SECRET_KEY'))
-        auth_token = user.encode_auth_token(user.username)
-        print(auth_token)
-        self.assertTrue(isinstance(auth_token, bytes))
+
+        new_user = User.objects(username='Sanket').first()
+        self.assertEqual(new_user.username, user.username)
 
 
 if __name__ == '__name__':

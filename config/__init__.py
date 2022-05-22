@@ -16,4 +16,3 @@ def load_config(mode=os.environ.get('MODE')):
     except ImportError:
         from .development import DevelopmentConfig
         return DevelopmentConfig
-

@@ -20,4 +20,3 @@ def getBooksName(id):
             book = getBook(b)
             book_list.append(book)
         return book_list
-
