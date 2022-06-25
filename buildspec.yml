@@ -9,9 +9,9 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t booksapp ./web/
-      - docker tag booksapp $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/booksapp:latest
-      - docker tag booksapp $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/booksapp:$BUILD_NUMBER
+      - docker build -t booksapp:latest ./web/
+      - docker tag booksapp:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/booksapp:latest
+      - docker tag booksapp:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/booksapp:$BUILD_NUMBER
   post_build:
     commands:
       - echo Build completed on `date`
