@@ -1,6 +1,5 @@
-from flask import Blueprint, request, jsonify
-
 from app.service.books import getBook
+from flask import Blueprint, request, jsonify
 
 book_blueprint = Blueprint("book", __name__, url_prefix="/book")
 

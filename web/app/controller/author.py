@@ -1,6 +1,5 @@
-from flask import request, jsonify, Blueprint
-
 from app.service.author import getBooksName, getAuthorName
+from flask import request, jsonify, Blueprint
 
 auth_blueprint = Blueprint("auth", __name__, url_prefix="/author")
 

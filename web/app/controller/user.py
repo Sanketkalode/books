@@ -1,7 +1,6 @@
+from app.service.user import check_username_password
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
-
-from app.service.user import check_username_password
 
 user_blueprint = Blueprint("user", __name__)
 

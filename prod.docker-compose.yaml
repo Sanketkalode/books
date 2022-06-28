@@ -1,0 +1,52 @@
+version: '3.7'
+
+services:
+
+#  db:
+#    image: mongo
+#    container_name: mongodb
+#    restart: unless-stopped
+#    volumes:
+#      - mongodata:/data/db
+#    environment:
+#      MONGODB_DATA_DIR: /data/db
+#      MONGODB_LOG_DIR: /dev/null
+#      MONGO_INITDB_DATABASE: BooksDB
+#    networks:
+#      - application_network
+
+  app:
+#    build: ./web/
+    image: sanketkalode/bookapi
+    ports:
+     - 5000:5000
+    networks:
+      - application_network
+#    depends_on:
+#      - db
+    environment:
+      MONGODB_DATABASE: BooksDB
+      MONGODB_HOSTNAME: ${HOST}
+      MONGODB_PORT: 27017
+      FLASK_ENV: production
+
+  server:
+#    build: ./server/
+    image: sanketkalode/web-server
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - 80:80
+    networks:
+      - application_network
+    depends_on:
+      - app
+
+
+#volumes:
+#  mongodata:
+#    external: true
+
+networks:
+  application_network:
+    driver: bridge
