@@ -10,6 +10,6 @@ class ProductionConfig(object):
     MONGODB_SETTINGS = {
         'db': os.environ.get("MONGODB_DATABASE") or 'BooksDB',
         'host': os.environ.get("MONGODB_HOSTNAME") or 'localhost',
-        'port': int(os.environ.get("MONGODB_PORT")) or 27017
+        'port': 27017
     }
     JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(minutes=15)
