@@ -25,7 +25,7 @@ services:
 #      - db
     environment:
       MONGODB_DATABASE: BooksDB
-      MONGODB_HOSTNAME: ${HOST}
+      MONGODB_HOSTNAME: 172.31.82.194
       MONGODB_PORT: 27017
       FLASK_ENV: development
 
