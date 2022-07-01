@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   web:
-    build: sanketkalode/bookapi
+    image: sanketkalode/bookapi
     ports:
      - 5000:5000
     networks:
@@ -10,12 +10,12 @@ services:
 
     environment:
       MONGODB_DATABASE: BooksDB
-      MONGODB_HOSTNAME: ${HOST}
+      MONGODB_HOSTNAME: 3.83.86.7
       MONGODB_PORT: 27017
       FLASK_ENV: production
 
   server:
-    build: sanketkalode/web-server
+    image: sanketkalode/web-server
     container_name: webserver
     restart: unless-stopped
     ports:

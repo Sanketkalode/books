@@ -1,5 +1,5 @@
 {
-  "AWSEBDockerrunVersion": 3,
+  "AWSEBDockerrunVersion": 2,
   "containerDefinations": [
     {
       "name": "app",
@@ -11,7 +11,7 @@
         },
         {
           "name": "MONGODB_HOSTNAME",
-          "value": "54.234.126.226"
+          "value": "172.31.82.194"
         },
         {
           "name": "MONGODB_PORT",
