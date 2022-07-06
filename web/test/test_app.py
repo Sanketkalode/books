@@ -28,7 +28,7 @@ class TestApp(TestCase):
     def test_home_route(self):
         with self.app.test_client() as c:
             response = c.get('/', headers={"Content-Type": "application/json"})
-            self.assertEqual(response.json['message'], "Welcome to book.com")
+            self.assertEqual(response.json['message'], "Welcome to book.com v.2")
 
     def test_appConfig(self):
         self.assertEqual(self.app.config['SECRET_KEY'], 'sanket')
