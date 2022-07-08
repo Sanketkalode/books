@@ -1,42 +1,39 @@
 {
   "AWSEBDockerrunVersion": 2,
-  "volumes": [
-    {
-      "name": "php-app",
-      "host": {
-        "sourcePath": "/var/app/current/php-app"
-      }
-    },
-    {
-      "name": "nginx-proxy-conf",
-      "host": {
-        "sourcePath": "/var/app/current/proxy/conf.d"
-      }
-    }
-  ],
   "containerDefinitions": [
     {
-      "name": "php-app",
-      "image": "php:fpm",
+      "name": "app",
+      "image": "sanketkalode/bookapi",
       "environment": [
         {
-          "name": "Container",
-          "value": "PHP"
+          "name": "MONGODB_DATABASE",
+          "value": "BooksDB"
+        },
+        {
+          "name": "MONGODB_HOSTNAME",
+          "value": "172.31.82.194"
+        },
+        {
+          "name": "MONGODB_PORT",
+          "value": 27017
+        },
+        {
+          "name": "FLASK_ENV",
+          "value": "production"
         }
       ],
       "essential": true,
-      "memory": 128,
-      "mountPoints": [
+      "memory": 256,
+      "portMappings": [
         {
-          "sourceVolume": "php-app",
-          "containerPath": "/var/www/html",
-          "readOnly": true
+          "hostPort": 5000,
+          "containerPort": 5000
         }
       ]
     },
     {
-      "name": "nginx-proxy",
-      "image": "nginx",
+      "name": "server",
+      "image": "sanketkalode/web-server",
       "essential": true,
       "memory": 128,
       "portMappings": [
@@ -46,23 +43,7 @@
         }
       ],
       "links": [
-        "php-app"
-      ],
-      "mountPoints": [
-        {
-          "sourceVolume": "php-app",
-          "containerPath": "/var/www/html",
-          "readOnly": true
-        },
-        {
-          "sourceVolume": "nginx-proxy-conf",
-          "containerPath": "/etc/nginx/conf.d",
-          "readOnly": true
-        },
-        {
-          "sourceVolume": "awseb-logs-nginx-proxy",
-          "containerPath": "/var/log/nginx"
-        }
+        "app"
       ]
     }
   ]
