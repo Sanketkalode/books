@@ -15,7 +15,7 @@ services:
       FLASK_ENV: production
 
   server:
-    image: sanketkalode/web-server
+    image: sanketkalode/web-server:ubuntu
     container_name: webserver
     restart: unless-stopped
     ports:
