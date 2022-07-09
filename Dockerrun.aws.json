@@ -2,7 +2,7 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "name": "app",
+      "name": "web",
       "image": "sanketkalode/bookapi",
       "environment": [
         {
@@ -20,6 +20,10 @@
         {
           "name": "FLASK_ENV",
           "value": "production"
+        },
+        {
+          "name": "Container",
+          "value": "web"
         }
       ],
       "essential": true,
@@ -43,7 +47,13 @@
         }
       ],
       "links": [
-        "app"
+        "web"
+      ],
+      "environment": [
+        {
+          "name": "Container",
+          "value": "server"
+        }
       ]
     }
   ]
