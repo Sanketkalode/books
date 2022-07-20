@@ -10,7 +10,7 @@ services:
 
     environment:
       MONGODB_DATABASE: BooksDB
-      MONGODB_HOSTNAME: 3.83.86.7
+      MONGODB_HOSTNAME: 172.31.82.194
       MONGODB_PORT: 27017
       FLASK_ENV: production
 

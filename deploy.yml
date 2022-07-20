@@ -58,9 +58,16 @@
         force: yes
       become: true
 
+    - name: Stop all running containers
+      docker_compose:
+        project_src: /home/ubuntu/booksApp/
+        build: no
+        stopped: yes
+
     - name: deploy Docker Compose stack
       docker_compose:
         project_src: /home/ubuntu/booksApp/
+        build: yes
         files:
         - docker-compose.prod.yml
       become: true
